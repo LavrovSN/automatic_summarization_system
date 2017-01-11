@@ -1,9 +1,11 @@
+from __future__ import unicode_literals
 
 from ResListsLoaderClass import LoadExternalLists
 from SentenceSplitterClass import SentenceSplitter
 from TextSegmentorClass import TextSegmentor
 import codecs, itertools, subprocess, json
 from SymmetricalSummarizingClass import *
+
 
 class SUMMARIZER():
 
@@ -111,7 +113,7 @@ class SUMMARIZER():
 def main():
 
     maint_text = open('text.txt')
-    test = maint_text.read()
+    test1 = maint_text.read()
 
     test1 = SUMMARIZER()
 

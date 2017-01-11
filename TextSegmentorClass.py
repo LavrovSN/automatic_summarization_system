@@ -18,7 +18,7 @@ class TextSegmentor(object):
         self.ABBREVIATIONS = ABBREVIATIONS
         self.punctuation = "∙!‼¡\"#£€$¥%&'()*+±×÷·,-./:;<=>?¿@[\]^ˆ¨_`—–­{|}~≈≠→↓¬’“”«»≫‘…¦›🌼′″¹§¼⅜½¾⅘©✩✒•►●★❤➡➜➚➘➔✔➓➒➑➐➏➎➍➌➋➊❸❷■†✝✌￼️³‎²‚„ ​"    # знаки для обрезания вокруг слов
         # знаки, по которым разбивать на слова
-        self.punctsplit = re.compile(r'[\s\(\"\'\’\“\”\«\»\‘\[\{\<~…#` �⌂ ∞½¾►=\;\:\—\′\″ „-]+')
+        self.punctsplit = re.compile(r'[\s\(\"\'\’\“\”\«\»\‘\[\{\<~…#` �⌂ ∞½¾►=\;\:\—\′\″ „-]+')
 
         if self.language == 'de':
             self.normalizer = NormalizerDE()
@@ -212,13 +212,13 @@ class TextSegmentor(object):
         возвращает список вложенных списков со склеенными предложениями. 
         """
 
-        acronim = re.compile(r'[\"\'\“\«\‘\(\[\{\<\`]?[A-ZА-ЯÄÖÜ][a-z]{0,1}\.[A-ZА-ЯÄÖÜ]\.$')
-        time_pm = re.compile(r'[ap]\.\m\.$')
+        acronim = re.compile(r'([a-zA-ZА-Яа-я0-9ÄÖÜäöüß]\.([a-zA-ZА-Яа-я0-9ÄÖÜäöüß]\.)*)')
+        time_pm = re.compile(r'(etc\.|Jr\.)')
         chicago_time = re.compile(r'^[A-Z][a-z]+\s[Tt]ime')
-        
+
         time_abbrev = set([
             'EST', 'ET', 'PST', 'EDT',
-            'AMC','PST', 'PDT', 'ET/PT',
+            'AMC', 'PST', 'PDT', 'ET/PT',
             'Eastern', 'CT', 'Western',
             'CST', 'EST/PST', 'PT'
         ])
